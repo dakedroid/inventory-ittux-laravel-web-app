@@ -17,5 +17,6 @@ Route::get('/', 'HomeController@index');
 Route::resource('almacen/herramienta','HerramientasController');
 
 Route::resource('almacen/articulo','ArticulosController');
-
+	
 Route::resource('almacen/carrito', 'CarritoController');
+ // que onda soy kevin 
