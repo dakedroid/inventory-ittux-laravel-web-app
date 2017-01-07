@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class HerramientasFormRequest extends FormRequest
+class IventarioRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,12 @@ class HerramientasFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'clave'=>'required|max:10',
+            'nombre'=>'required|max:50',
+            'categoria'=>'required|max:50',
+            'tipo'=>'required|max:50',
+            'cantidad'=>'required|max:3',
+            'unidad'=>'required|max:20',
         ];
     }
 }

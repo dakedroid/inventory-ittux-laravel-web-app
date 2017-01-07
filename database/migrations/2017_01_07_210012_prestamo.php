@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CarritoTable extends Migration
+class Prestamo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CarritoTable extends Migration
      */
     public function up()
     {
-      Schema::create('carrito', function(Blueprint $table){
-          $table->increments('num_progre');
-          $table->string('id');
+        Schema::create('prestamo', function(Blueprint $table){
+          $table->increments('num_progre');  
+          $table->string('clave');
           $table->string('nombre');
           $table->string('categoria');
+          $table->string('tipo');
           $table->integer('cantidad');
           $table->string('unidad');
           $table->string('portador');
           $table->string('producto');
-          $table->integer('condicion');
-      });
+        });
     }
 
     /**
@@ -33,6 +33,6 @@ class CarritoTable extends Migration
      */
     public function down()
     {
-        Schema::drop('carrito');
+        Schema::drop('prestamo');
     }
 }

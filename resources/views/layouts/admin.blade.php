@@ -93,7 +93,7 @@
               <ul class="treeview-menu">
                 <li><a href="{{url('almacen/articulo')}}"><i class="fa fa-circle-o"></i>Consumibles</a></li>
 
-                <li><a href="{{url('almacen/herramienta')}}"><i class="fa fa-circle-o"></i> No consumibles</a></li>
+                <li><a href="{{url('almacen/inventario')}}"><i class="fa fa-circle-o"></i> No consumibles</a></li>
               </ul>
             </li>
 
@@ -105,7 +105,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{url('almacen/articulo/create')}}"><i class="fa fa-circle-o"></i> Consumibles</a></li>
-                <li><a href="{{url('almacen/herramienta/create')}}"><i class="fa fa-circle-o"></i>  No consumibles</a></li>
+                <li><a href="{{url('almacen/inventario/create')}}"><i class="fa fa-circle-o"></i>  No consumibles</a></li>
               </ul>
             </li>
             <li class="treeview">

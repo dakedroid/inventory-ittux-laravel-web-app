@@ -2,7 +2,7 @@
 @section ('contenido')
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<h3>Prestar articulo:{{$articulo->nombre}}</h3>
+			<h3>Prestar inventario:{{$inventario->nombre}}</h3>
 			@if (count($errors)>0)
 			<div class="alert alert-danger">
 				<ul>
@@ -13,27 +13,27 @@
 			</div>
 			@endif
 
-      {!!Form::model($articulo,['method'=>'PATCH','route'=>['articulo.update',$articulo->num_progre]])!!}
+      {!!Form::model($inventario,['method'=>'PATCH','route'=>['inventario.update',$inventario->num_progre]])!!}
             {{Form::token()}}
 						<table  class="table table-condensed" ALIGN="center" class="row">
 						  		<td WIDTH="40%"><div class="form-group">
 										<div class="form-group">
                     	<label for="num_progre">Num progre</label>
-                    	<input type="text" name="num_progre" class="form-control" value="{{$articulo->num_progre}}" placeholder="Num progre ...">
+                    	<input type="text" name="num_progre" class="form-control" value="{{$inventario->num_progre}}" placeholder="Num progre ...">
                     </div>
 
 										<div class="form-group">
-												<label for="id">Clave</label>
-												<input type="text" name="id" class="form-control" value="{{$articulo->id}}">
+												<label for="clave">Clave</label>
+												<input type="text" name="clave" class="form-control" value="{{$inventario->clave}}">
 										</div>
 										<div class="form-group">
-										<label for="nombre">Nombre articulo</label>
-										<input type="text" name="nombre" class="form-control" value="{{$articulo->nombre}}" placeholder="Nombre articulo...">
+										<label for="nombre">Nombre herramienta</label>
+										<input type="text" name="nombre" class="form-control" value="{{$inventario->nombre}}" placeholder="Nombre herramienta...">
 									</div>
 									<div class="form-group">
 										<label for="categoria">Categoria</label>
 										<select name="categoria" class="form-control">
-											<option value="{{$articulo->categoria}}">{{$articulo->categoria}}</option>
+											<option value="{{$inventario->categoria}}">{{$inventario->categoria}}</option>
 											<option>Papeleria</option>
 											<option>Materiales electricos</option>
 											<option>Fonteneria</option>
@@ -46,7 +46,7 @@
 											<option>Electrodomesticos</option>
 											<option>Refacciones</option>
 											<option>Mobiliario</option>
-											<option>Herramientas</option>
+											<option>inventarios</option>
 											<option>Señalizacion</option>
 											<option>Aceites y lubricantes</option>
 											<option>Automotriz</option>
@@ -59,13 +59,13 @@
 
 										<div class="form-group">
 											<label for="cantidad">Cantidad Total</label>
-											<input type="text" name="cantidad" class="form-control" value="{{$articulo->cantidad}}" placeholder="Cantidad...">
+											<input type="text" name="cantidad" class="form-control" value="{{$inventario->cantidad}}" placeholder="Cantidad...">
 										</div>
 
 											<div class="form-group">
 												<label for="unidad">Unidad</label>
 												<select name="unidad" class="form-control">
-													<option value="{{$articulo->unidad}}">{{$articulo->unidad}}</option>
+													<option value="{{$inventario->unidad}}">{{$inventario->unidad}}</option>
 													<option>1</option>
 													<option>2</option>
 													<option>3</option>

@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use App\Http\Requests\ArticulosFormRequest;
-use App\ArticuloModel;
+use App\Http\Requests\InventarioFormRequest;
+use App\InventarioModel;
 use App\CarritoModel;
 use DB;
 
-class ArticulosController extends Controller
+class InventarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,11 +21,10 @@ class ArticulosController extends Controller
         if ($request)
         {
             $query=trim($request->get('searchText'));
-            $articulo=DB::table('articulo_existencia')->where('nombre','LIKE','%'.$query.'%')
-            ->where('condicion','1')
+            $inventario =DB::table('inventario')->where('nombre','LIKE','%'.$query.'%')
             ->orderBy('num_progre','asc')
             ->paginate(10);
-            return view('almacen.articulo.index',["articulo"=>$articulo,"searchText"=>$query]);
+            return view('almacen.inventario.index',["inventario"=>$inventario ,"searchText"=>$query]);
         }
     }
 
@@ -36,7 +35,7 @@ class ArticulosController extends Controller
      */
     public function create()
     {
-        return view("almacen.articulo.create");
+        return view("almacen.inventario.create");
     }
 
     /**
@@ -47,16 +46,16 @@ class ArticulosController extends Controller
      */
     public function store(Request $request)
     {
-        $articulo=new ArticuloModel;
-        $articulo->nombre=$request->get('nombre');
-        $articulo->id = $request->get('id');
-        $articulo->categoria=$request->get('categoria');
-        $articulo->cantidad=$request->get('cantidad');
-        $articulo->unidad=$request->get('unidad');
-        $articulo->condicion='1';
-        $articulo->producto='consumible';
-        $articulo->save();
-        return Redirect::to('almacen/articulo');
+        $inventario = new InventarioModel ;
+        $inventario->clave=$request->get('clave');
+        $inventario->nombre=$request->get('nombre');
+        $inventario->categoria=$request->get('categoria');
+        $inventario->tipo="";
+        $inventario->cantidad=$request->get('cantidad');
+        $inventario->unidad=$request->get('unidad');
+        $inventario->save();
+
+        return Redirect::to('almacen/inventario');
     }
 
     /**
@@ -67,7 +66,7 @@ class ArticulosController extends Controller
      */
     public function show($id)
     {
-        return view("almacen.articulo.show",["articulo"=>ArticuloModel::findOrFail($id)]);
+        return view("almacen.inventario.show",["inventario"=>InventarioModel::findOrFail($id)]);
     }
 
     /**
@@ -78,7 +77,7 @@ class ArticulosController extends Controller
      */
     public function edit($id)
     {
-        return view("almacen.articulo.edit",["articulo"=>ArticuloModel::findOrFail($id)]);
+        return view("almacen.inventario.edit",["inventario"=>InventarioModel::findOrFail($id)]);
 
     }
 
@@ -92,23 +91,25 @@ class ArticulosController extends Controller
     public function update(Request $request, $id)
     {
 
-        $articulo=ArticuloModel::findOrFail($id);
-        $articulo->nombre=$request->get('nombre');
-        $articulo->categoria=$request->get('categoria');
-        $articulo->cantidad=($request->get('cantidad'))-($request->get('c_prestar'));
-        $articulo->unidad=$request->get('unidad');
-        $articulo->update();
+        $inventario=InventarioModel::findOrFail($id);
+        $inventario->clave=$request->get('clave');
+        $inventario->nombre=$request->get('nombre');
+        $inventario->categoria=$request->get('categoria');
+        $inventario->tipo="";
+        $inventario->cantidad=($request->get('cantidad'))-($request->get('c_prestar'));
+        $inventario->unidad=$request->get('unidad');
+        $inventario->update();
 
         $carrito=new CarritoModel;
         $carrito->num_progre=$request->get('num_progre');
-        $carrito->id=$request->get('id');
+        $carrito->clave=$request->get('clave');
         $carrito->nombre=$request->get('nombre');
         $carrito->categoria=$request->get('categoria');
+        $carrito->tipo="";
         $carrito->cantidad=$request->get('c_prestar');
         $carrito->unidad=$request->get('unidad');
         $carrito->portador=$request->get('portador');
-        $carrito->producto='consumible';
-        $carrito->condicion='1';
+        
         $carrito->save();
         return Redirect::to('almacen/carrito');
 
@@ -122,12 +123,12 @@ class ArticulosController extends Controller
      */
     public function destroy($id)
     {
-        //$articulo=ArticuloModel::findOrFail($id);
-        //$query="DELETE FROM ArticuloModel where num_progre='$id'";
+        //$inventario =inventario Model::findOrFail($id);
+        //$query="DELETE FROM inventario Model where num_progre='$id'";
 
-        DB::table('articulo_existencia')->where('num_progre', $id)->delete();
-        //$articulo->condicion='0';
-        //$articulo->update();
-        return Redirect::to('almacen/articulo');
+        DB::table('inventario')->where('num_progre', $id)->delete();
+        //$inventario ->condicion='0';
+        //$inventario ->update();
+        return Redirect::to('almacen/inventario');
     }
 }

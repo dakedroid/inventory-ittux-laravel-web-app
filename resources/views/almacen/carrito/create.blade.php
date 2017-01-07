@@ -13,7 +13,7 @@
 			</div>
 			@endif
 
-			{!!Form::open(array('route'=>['articulo.update',$herramienta->num_progre]]),'method'=>'POST','autocomplete'=>'off'))!!}
+			{!!Form::open(array('route'=>['carrito.update',$carrito->num_progre]]),'method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}
             <table  class="table table-condensed" ALIGN="center" class="row">
                   <td WIDTH="40%"><div class="form-group">

@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CarritoModel;
-use App\ArticuloModel;
-
+use App\InventarioModel;
 use Illuminate\Support\Facades\Redirect;
 use DB;
 
@@ -22,7 +21,7 @@ class CarritoController extends Controller
         {
             $query=trim($request->get('searchText'));
             $carrito=DB::table('carrito')->where('nombre','LIKE','%'.$query.'%')
-            ->where('condicion','1')
+           
             ->orderBy('num_progre','asc')
             ->paginate(10);
             return view('almacen.carrito.index',["carrito"=>$carrito,"searchText"=>$query]);
@@ -50,13 +49,12 @@ class CarritoController extends Controller
         $carrito=new CarritoModel;
       //  $carrito->num_progre=$request->get('num_progre');
         $carrito->nombre=$request->get('nombre');
-        $carrito->id=$request->get('id');
+        $carrito->clave=$request->get('clave');
         $carrito->categoria=$request->get('categoria');
+        $carrito->tipo=$request->get('tipo');
         $carrito->cantidad=($request->get('cantidad'))-($request->get('c_prestar'));
         $carrito->unidad=$request->get('unidad');
         $carrito->portador=$request->get('portador');
-        $carrito->producto='consumible';
-        $carrito->condicion='1';
         $carrito->save();
         return Redirect::to('almacen/carrito');
     }
@@ -103,14 +101,14 @@ class CarritoController extends Controller
      */
     public function destroy($id)
     {
-        $articulo=ArticuloModel::findOrFail($id);
+        $inventario=InventarioModel::findOrFail($id);
         $carrito=CarritoModel::findOrFail($id);
-        $articulo->cantidad= $articulo->cantidad + $carrito->cantidad;
+        $inventario->cantidad= $inventario->cantidad + $carrito->cantidad;
         //$carrito->cantidad = 0;
-        $articulo->update();
+        $inventario->update();
 
         DB::table('carrito')->where('num_progre', $id)->delete();
         $carrito->update();
-        return Redirect::to('almacen/articulo');
+        return Redirect::to('almacen/inventario');
     }
 }

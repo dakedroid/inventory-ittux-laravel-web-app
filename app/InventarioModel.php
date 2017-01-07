@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ArticuloModel extends Model
+class InventarioModel extends Model
 {
-    protected $table='articulo_existencia';
+    protected $table='inventario';
     protected $primaryKey='num_progre';
     public $timestamps=false;
     protected $fillable=[
@@ -15,8 +15,7 @@ class ArticuloModel extends Model
     'categoria',
     'tipo',
     'cantidad',
-    'unidad',
-    'producto'
+    'unidad'
     ];
     protected $guarded=[
 

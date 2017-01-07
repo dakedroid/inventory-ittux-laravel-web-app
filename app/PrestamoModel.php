@@ -4,19 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ArticuloModel extends Model
+class PrestamoModel extends Model
 {
-    protected $table='articulo_existencia';
+  	protected $table='prestamo';
     protected $primaryKey='num_progre';
     public $timestamps=false;
     protected $fillable=[
-    'clave',
-    'nombre',
-    'categoria',
-    'tipo',
-    'cantidad',
-    'unidad',
-    'producto'
+      'nombre',
+      'clave',
+      'categoria',
+      'tipo',
+      'cantidad',
+      'unidad',
+      'portador',
+      'producto'
     ];
     protected $guarded=[
 

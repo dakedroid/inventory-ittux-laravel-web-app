@@ -13,15 +13,15 @@
 			</div>
 			@endif
 
-			{!!Form::open(array('url'=>'almacen/herramienta','method'=>'POST','autocomplete'=>'off'))!!}
+			{!!Form::open(array('url'=>'almacen/inventario','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}
             <div class="form-group">
-            	<label for="nombre">Nombre herramienta</label>
-            	<input type="text" name="nombre" class="form-control" placeholder="Nombre herramienta...">
+            	<label for="nombre">Nombre inventario</label>
+            	<input type="text" name="nombre" class="form-control" placeholder="Nombre inventario...">
             </div>
             <div class="form-group">
-                <label for="id">Clave</label>
-                <input type="text" name="id" class="form-control" placeholder="Clave...">
+                <label for="clave">Clave</label>
+                <input type="text" name="clave" class="form-control" placeholder="Clave...">
             </div>
             <div class="form-group">
             	<label for="categoria">Categoria</label>
@@ -62,14 +62,6 @@
                     <option>Metros</option>
                     <option>Lotes</option>
                     <option>Paquetes</option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
 
                   </select>
                 </div>

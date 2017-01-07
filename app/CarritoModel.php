@@ -13,12 +13,10 @@ class CarritoModel extends Model
       'nombre',
       'clave',
       'categoria',
+      'tipo',
       'cantidad',
       'unidad',
-      'portador',
-      'producto',
-      'condicion'
-
+      'portador'
       ];
       protected $guarded=[
 
