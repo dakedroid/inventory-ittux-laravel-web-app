@@ -15,9 +15,9 @@
 Route::get('/', 'HomeController@index');
 
 Route::resource('almacen/herramienta','HerramientasController');
-
+// esto estoy subiendo 
 Route::resource('almacen/articulo','ArticulosController');
-	
+
 Route::resource('almacen/carrito', 'CarritoController');
  // que onda soy sixto y modifique dos lineas
-// segunda linea 
+// segunda linea
