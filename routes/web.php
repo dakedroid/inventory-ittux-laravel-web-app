@@ -19,7 +19,7 @@ Route::resource('almacen/herramienta','HerramientasController');
 Route::resource('almacen/articulo','ArticulosController');
 
 	// mi comentario
-
+	// segundo comentario
 
 Route::resource('almacen/carrito', 'CarritoController');
  // que onda soy sixto y modifique dos lineas
