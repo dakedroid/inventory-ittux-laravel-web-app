@@ -19,8 +19,12 @@ Route::resource('almacen/herramienta','HerramientasController');
 Route::resource('almacen/articulo','ArticulosController');
 
 	// mi comentario
+<<<<<<< HEAD
 
 // web.php
+=======
+	// segundo comentario
+>>>>>>> 0e4a58d23ae95d230bfdc635a3cb7bc24c25a529
 
 Route::resource('almacen/carrito', 'CarritoController');
  // que onda soy sixto y modifique dos lineas
