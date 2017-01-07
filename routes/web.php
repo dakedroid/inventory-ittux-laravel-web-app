@@ -15,11 +15,12 @@
 Route::get('/', 'HomeController@index');
 
 Route::resource('almacen/herramienta','HerramientasController');
-// esto estoy subiendo 
+// esto estoy subiendo
 Route::resource('almacen/articulo','ArticulosController');
 
 	// mi comentario
 
+// web.php
 
 Route::resource('almacen/carrito', 'CarritoController');
  // que onda soy sixto y modifique dos lineas
