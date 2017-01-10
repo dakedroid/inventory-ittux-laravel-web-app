@@ -46,14 +46,34 @@ class InventarioController extends Controller
      */
     public function store(Request $request)
     {
-        $inventario = new InventarioModel ;
-        $inventario->clave=$request->get('clave');
-        $inventario->nombre=$request->get('nombre');
-        $inventario->categoria=$request->get('categoria');
-        $inventario->tipo="";
-        $inventario->cantidad=$request->get('cantidad');
-        $inventario->unidad=$request->get('unidad');
-        $inventario->save();
+        //$inventario=InventarioModel::findOrFail($request->get('clave'));
+
+        $cantidad = DB::table('inventario')->where('clave', $request->get('clave'))->get()->pluck('cantidad');
+
+        if ($cantidad == "[]"){
+            $inventario = new InventarioModel ;
+            $inventario->clave=$request->get('clave');
+            $inventario->nombre=$request->get('nombre');
+            $inventario->categoria=$request->get('categoria');
+            
+            $cat = $request->get('categoria');
+
+            if ($cat == "Papeleria"){
+                $inventario->tipo="Consumible";
+            }else {
+                 $inventario->tipo="";
+            }
+           
+            $inventario->cantidad=$request->get('cantidad');
+            $inventario->unidad=$request->get('unidad');
+            $inventario->save();
+    
+        }else{
+            $n_cantidad = $cantidad->get(0) + $request->get('cantidad');
+            DB::table('inventario')
+            ->where('clave', $request->get('clave'))
+            ->update(['cantidad' => $n_cantidad]);
+        }
 
         return Redirect::to('almacen/inventario');
     }
@@ -127,7 +147,7 @@ class InventarioController extends Controller
         //$query="DELETE FROM inventario Model where num_progre='$id'";
 
         DB::table('inventario')->where('num_progre', $id)->delete();
-        //$inventario ->condicion='0';
+        //$inventario ->condiczion='0';
         //$inventario ->update();
         return Redirect::to('almacen/inventario');
     }

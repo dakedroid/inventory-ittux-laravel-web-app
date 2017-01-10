@@ -22,7 +22,6 @@ class HistorialPrestamos extends Migration
           $table->integer('cantidad');
           $table->string('unidad');
           $table->string('portador');
-          $table->string('producto');
         });
     }
 
