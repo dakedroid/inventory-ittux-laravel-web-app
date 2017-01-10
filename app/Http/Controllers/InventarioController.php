@@ -22,10 +22,11 @@ class InventarioController extends Controller
         {
             $query=trim($request->get('searchText'));
             $inventario =DB::table('inventario')->where('nombre','LIKE','%'.$query.'%')
-            ->orderBy('num_progre','asc')
+            ->orderBy('num_progre','desc')
             ->paginate(10);
             return view('almacen.inventario.index',["inventario"=>$inventario ,"searchText"=>$query]);
         }
+      
     }
 
     /**
@@ -129,7 +130,7 @@ class InventarioController extends Controller
         $carrito->cantidad=$request->get('c_prestar');
         $carrito->unidad=$request->get('unidad');
         $carrito->portador=$request->get('portador');
-        
+
         $carrito->save();
         return Redirect::to('almacen/carrito');
 

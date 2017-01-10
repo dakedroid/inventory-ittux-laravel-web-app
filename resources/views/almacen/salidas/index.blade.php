@@ -19,7 +19,7 @@
 					<th>Tipo</th>
 					<th>Cantidad</th>
 					<th>Unidad</th>
-
+					<th>Opciones</th>
 				</thead>
 				@foreach($inventario as $cat)
 				<tr>
@@ -30,7 +30,10 @@
 					<td>{{$cat->tipo}}</td>
 					<td>{{$cat->cantidad}}</td>
 					<td>{{$cat->unidad}}</td>
-
+					<td>
+						<a href="{{URL::action('InventarioController@edit',$cat->num_progre)}}"><button class="btn btn-info">Carrito</button></a>
+										<a href="" data-target="#modal-delete-{{$cat->num_progre}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+					</td>
 				</tr>
 				@include('almacen.inventario.modal')
 				@endforeach
