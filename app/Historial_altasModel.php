@@ -15,8 +15,8 @@ class Historial_altasModel extends Model
     'categoria',
     'tipo',
     'cantidad',
-    'unidad'
-
+    'unidad',
+    'fecha'
     ];
     protected $guarded=[
 

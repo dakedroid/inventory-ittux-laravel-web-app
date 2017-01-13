@@ -87,7 +87,7 @@ class InventarioController extends Controller
         $historial_e->tipo="";
         $historial_e->cantidad=$request->get('cantidad');
         $historial_e->unidad=$request->get('unidad');
-        $historial_e->producto="";
+        $historial_e->created_at="2017-01-18 04:15:21";
         $historial_e->save();
 
 
@@ -156,7 +156,7 @@ class InventarioController extends Controller
         $historial_s->cantidad=$request->get('c_prestar');
         $historial_s->unidad=$request->get('unidad');
         $historial_s->portador=$request->get('portador');
-        $historial_s->producto="";
+        $historial_s->created_at="2017-01-18 04:15:21";
         $historial_s->save();
 
         return Redirect::to('almacen/carrito');

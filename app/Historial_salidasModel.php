@@ -16,7 +16,8 @@ class Historial_salidasModel extends Model
       'tipo',
       'cantidad',
       'unidad',
-      'portador'
+      'portador',
+      'fecha'
       ];
       protected $guarded=[
 
