@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\InventarioFormRequest;
 use App\InventarioModel;
+use App\Http\Requests\Historial_altasFormRequest;
+use App\Http\Requests\Historial_salidasFormRequest;
+use App\Historial_altasModel;
+use App\Historial_salidasModel;
 use App\CarritoModel;
 use DB;
 
@@ -26,7 +30,7 @@ class InventarioController extends Controller
             ->paginate(10);
             return view('almacen.inventario.index',["inventario"=>$inventario ,"searchText"=>$query]);
         }
-      
+
     }
 
     /**
@@ -56,7 +60,7 @@ class InventarioController extends Controller
             $inventario->clave=$request->get('clave');
             $inventario->nombre=$request->get('nombre');
             $inventario->categoria=$request->get('categoria');
-            
+
             $cat = $request->get('categoria');
 
             if ($cat == "Papeleria"){
@@ -64,17 +68,28 @@ class InventarioController extends Controller
             }else {
                  $inventario->tipo="";
             }
-           
+
             $inventario->cantidad=$request->get('cantidad');
             $inventario->unidad=$request->get('unidad');
             $inventario->save();
-    
+
         }else{
             $n_cantidad = $cantidad->get(0) + $request->get('cantidad');
             DB::table('inventario')
             ->where('clave', $request->get('clave'))
             ->update(['cantidad' => $n_cantidad]);
         }
+
+        $historial_e=new Historial_altasModel;
+        $historial_e->clave=$request->get('clave');
+        $historial_e->nombre=$request->get('nombre');
+        $historial_e->categoria=$request->get('categoria');
+        $historial_e->tipo="";
+        $historial_e->cantidad=$request->get('cantidad');
+        $historial_e->unidad=$request->get('unidad');
+        $historial_e->producto="";
+        $historial_e->save();
+
 
         return Redirect::to('almacen/inventario');
     }
@@ -130,8 +145,20 @@ class InventarioController extends Controller
         $carrito->cantidad=$request->get('c_prestar');
         $carrito->unidad=$request->get('unidad');
         $carrito->portador=$request->get('portador');
-
         $carrito->save();
+
+        $historial_s=new Historial_salidasModel;
+
+        $historial_s->clave=$request->get('clave');
+        $historial_s->nombre=$request->get('nombre');
+        $historial_s->categoria=$request->get('categoria');
+        $historial_s->tipo="";
+        $historial_s->cantidad=$request->get('c_prestar');
+        $historial_s->unidad=$request->get('unidad');
+        $historial_s->portador=$request->get('portador');
+        $historial_s->producto="";
+        $historial_s->save();
+
         return Redirect::to('almacen/carrito');
 
     }
@@ -148,6 +175,9 @@ class InventarioController extends Controller
         //$query="DELETE FROM inventario Model where num_progre='$id'";
 
         DB::table('inventario')->where('num_progre', $id)->delete();
+
+        DB::table('historial_salidas')->where('clave', $request->get('clave'))->delete();
+
         //$inventario ->condiczion='0';
         //$inventario ->update();
         return Redirect::to('almacen/inventario');

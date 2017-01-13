@@ -2,9 +2,9 @@
 @section('contenido')
 
   <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-  		<h3>Listado de articulos añadidos al carrito </h3>
+  		<h3>Listado de articulos prestados </h3>
       <table WIDTH="100%" class="table table-condensed">
-        <th WIDTH="50%">@include('almacen.carrito.search')</th>
+        <th WIDTH="50%">@include('almacen.prestamo.search')</th>
         <th WIDTH="50%"></th>
       </table>
 </div>
@@ -15,7 +15,6 @@
   			<table class="table table-striped table-bordered table-condensed table-hover">
   				<thead>
   					<th>Num. Progreso</th>
-            <th>Clave</th>
   					<th>Nombre herramienta</th>
   					<th>Categoria</th>
             <th>Cantidad</th>
@@ -23,10 +22,9 @@
             <th>Portador</th>
   					<th>Opciones</th>
   				</thead>
-                 @foreach ($carrito as $cat)
+                 @foreach ($prestamo as $cat)
   				<tr>
   					<td>{{ $cat->num_progre}}</td>
-            <td>{{ $cat->clave}}</td>
   					<td>{{ $cat->nombre}}</td>
   					<td>{{ $cat->categoria}}</td>
             <td>{{ $cat->cantidad}}</td>
@@ -34,21 +32,19 @@
             <td>{{ $cat->portador}}</td>
   					<td>
 
-             <a href="" data-target="#modal-delete-{{$cat->clave}}" data-toggle="modal"><button class="btn btn-danger">Cancelar</button></a>
+             <a href="" data-target="#modal-delete-{{$cat->num_progre}}" data-toggle="modal"><button class="btn btn-danger">Cancelar</button></a>
 
             </td>
   				</tr>
-  				@include('almacen.carrito.modal')
+  				@include('almacen.prestamo.modal')
   				@endforeach
   			</table>
   		</div>
-  		{{$carrito->render()}}
+  		{{$prestamo->render()}}
   	</div>
 
 
     </div>
     </div>
-    <div  ALIGN="center" class="row">
-    <button class="btn btn-primary" type="submit" action="CarritoController@update">Guardar</button>
-    </div>
+
 @endsection

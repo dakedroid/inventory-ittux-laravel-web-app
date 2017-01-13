@@ -9,7 +9,7 @@ use App\InventarioModel;
 use App\CarritoModel;
 use DB;
 
-class SalidasController extends Controller
+class Historial_altasController extends Controller
 {
 
   /**
@@ -22,14 +22,12 @@ class SalidasController extends Controller
       if ($request)
       {
           $query=trim($request->get('searchText'));
-          $inventario =DB::table('inventario')->where('nombre','LIKE','%'.$query.'%')
+          $inventario =DB::table('historial_entradas')->where('nombre','LIKE','%'.$query.'%')
           ->orderBy('num_progre','desc')
           ->paginate(10);
-          return view('almacen.salidas.index',["inventario"=>$inventario ,"searchText"=>$query]);
+          return view('almacen.historial_altas.index',["inventario"=>$inventario ,"searchText"=>$query]);
       }
-/*
-	<a href="" data-target="#modal-delete-{{$cat->num_progre}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
-*/
+
   }
 
   /**
