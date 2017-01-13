@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\CarritoModel;
 use App\InventarioModel;
+use App\Http\Requests\Historial_salidasFormRequest;
+use App\Historial_salidasModel;
 use Illuminate\Support\Facades\Redirect;
 use DB;
 use PDF;
@@ -22,7 +24,7 @@ class CarritoController extends Controller
         {
             $query=trim($request->get('searchText'));
             $carrito=DB::table('carrito')->where('nombre','LIKE','%'.$query.'%')
-           
+
             ->orderBy('num_progre','asc')
             ->paginate(10);
             return view('almacen.carrito.index',["carrito"=>$carrito,"searchText"=>$query]);
@@ -106,14 +108,17 @@ class CarritoController extends Controller
      */
     public function destroy($id)
     {
-        $inventario=InventarioModel::findOrFail($id);
-        $carrito=CarritoModel::findOrFail($id);
+        echo $id;
+        $inventario=InventarioModel::where('clave', '=' ,$id)->firstOrFail();
+        $carrito=CarritoModel::where('clave', '=' ,$id)->firstOrFail();
         $inventario->cantidad= $inventario->cantidad + $carrito->cantidad;
         //$carrito->cantidad = 0;
         $inventario->update();
 
-        DB::table('carrito')->where('num_progre', $id)->delete();
+        DB::table('carrito')->where('clave', $id)->delete();
+
         $carrito->update();
+        DB::table('historial_salidas')->where('clave', $id)->delete();
         return Redirect::to('almacen/inventario');
     }
 }

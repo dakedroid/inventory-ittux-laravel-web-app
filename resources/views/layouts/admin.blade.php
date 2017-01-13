@@ -101,7 +101,7 @@
               </a>
               <ul class="treeview-menu">
                   <li><a href="{{url('almacen/inventario/create')}}"><i class="fa fa-circle-o"></i> Agregar articulos</a></li>
-                <li><a href="{{url('almacen/articulo/create')}}"><i class="fa fa-circle-o"></i> Historial</a></li>
+                <li><a href="{{url('almacen/historial_altas')}}"><i class="fa fa-circle-o"></i> Historial</a></li>
 
               </ul>
             </li>
@@ -114,7 +114,7 @@
               </a>
               <ul class="treeview-menu">
                   <li><a href="{{url('almacen/salidas')}}"><i class="fa fa-circle-o"></i> Realizar salida</a></li>
-                  <li><a href="{{url("#")}}"><i class="fa fa-circle-o"></i> Historial</a></li>
+                  <li><a href="{{url('almacen/historial_salida')}}"><i class="fa fa-circle-o"></i> Historial</a></li>
 
 
               </ul>
@@ -130,14 +130,12 @@
             </li>
 
             <li class="treeview">
-              <a href="#">
+              <a href="{{url('almacen/prestamo')}}">
                 <i class="fa fa-th"></i>
                 <span>Prestamos</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="{{url('almacen/prestamos')}}"><i class="fa fa-circle-o"></i> Todos</a></li>
-              </ul>
+
             </li>
 
 
@@ -154,12 +152,12 @@
               </ul>
             </li>
              <li>
-              <a href="#">
+              <a href="{{url('almacen/ayuda')}}">
                 <i class="fa fa-plus-square"></i> <span>Ayuda</span>
               </a>
             </li>
             <li>
-              <a href="{{url('almacen/articulo/acercade')}}">
+              <a href="{{url('almacen/acercade')}}">
                 <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
               </a>
             </li>

@@ -13,7 +13,7 @@ class PrestamoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class PrestamoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+          'clave'=>'required|max:10',
+          'nombre'=>'required|max:50',
+          'categoria'=>'required|max:50',
+          'tipo'=>'required|max:50',
+          'cantidad'=>'required|max:3',
+          'unidad'=>'required|max:20',
+          'portador'=>'required|max:150',
         ];
     }
 }
