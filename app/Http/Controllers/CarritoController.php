@@ -7,6 +7,7 @@ use App\CarritoModel;
 use App\InventarioModel;
 use Illuminate\Support\Facades\Redirect;
 use DB;
+use PDF;
 
 class CarritoController extends Controller
 {
@@ -88,10 +89,14 @@ class CarritoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
+
     {
-        //
+        $pdf = PDF::loadView('documentos.entradas');
+        return $pdf->download('archivo.pdf');
+
     }
+
 
     /**
      * Remove the specified resource from storage.

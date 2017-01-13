@@ -21,6 +21,7 @@ class HistoriaEntradas extends Migration
           $table->string('tipo');
           $table->integer('cantidad');
           $table->string('unidad');
+          $table->dateTime('created_at');
         });
     }
 

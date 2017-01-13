@@ -15,7 +15,8 @@ class InventarioModel extends Model
     'categoria',
     'tipo',
     'cantidad',
-    'unidad'
+    'unidad',
+    'fecha'
     ];
     protected $guarded=[
 

@@ -17,7 +17,8 @@ class PrestamoModel extends Model
       'cantidad',
       'unidad',
       'portador',
-      'producto'
+      'producto',
+      'fecha'
     ];
     protected $guarded=[
 

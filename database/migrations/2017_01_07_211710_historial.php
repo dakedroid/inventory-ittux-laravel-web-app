@@ -22,6 +22,7 @@ class Historial extends Migration
           $table->integer('cantidad');
           $table->string('unidad');
           $table->string('portador');
+          $table->dateTime('created_at');
         });
     }
 

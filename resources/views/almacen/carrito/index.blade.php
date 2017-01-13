@@ -45,7 +45,8 @@
 
     </div>
     </div>
+
     <div  ALIGN="center" class="row">
-    <button class="btn btn-primary" type="submit" action="CarritoController@update">Guardar</button>
+         <a href="/pdf"> <button class="btn btn-primary" type="submit">Generar</button>
     </div>
 @endsection

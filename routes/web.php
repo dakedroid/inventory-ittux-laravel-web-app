@@ -18,3 +18,4 @@ Route::resource('almacen/herramienta','HerramientasController');
 Route::resource('almacen/articulo','ArticulosController');
 Route::resource('almacen/carrito', 'CarritoController');
 Route::resource('almacen/salidas', 'SalidasController');
+Route::get('/pdf', 'CarritoController@update');
