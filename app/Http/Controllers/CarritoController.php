@@ -10,6 +10,7 @@ use App\Historial_salidasModel;
 use Illuminate\Support\Facades\Redirect;
 use DB;
 use PDF;
+use App;
 
 class CarritoController extends Controller
 {
@@ -94,8 +95,15 @@ class CarritoController extends Controller
     public function update(Request $request)
 
     {
-        $pdf = PDF::loadView('documentos.entradas');
-        return $pdf->download('archivo.pdf');
+
+        
+        //$pdf = App::make('dompdf.wrapper');
+        $pdf = PDF::loadView('documentos.salidas')->setPaper('a4','portrait')->setWarnings(false);
+        return $pdf->stream();
+
+
+        //$pdf = PDF::loadView('documentos.entradas');
+        //return $pdf->download('archivo.pdf');
 
     }
 
