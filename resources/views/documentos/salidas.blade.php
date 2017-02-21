@@ -212,7 +212,7 @@ EXCEL -->
  </tr>
  <tr height=21 style='height:15.75pt'>
   <td colspan=4 height=21 class=xl6616165 style='height:15.75pt'>DEPARTAMENTO
-  SLICITANTE:</td>
+  SOLICITANTE: {{$portador}}</td>
   <td colspan=2 class=xl6816165>No. DE REQUISICIÓN:</td>
  </tr>
  <tr height=21 style='height:15.75pt'>
@@ -251,34 +251,34 @@ EXCEL -->
   <td class=xl6916165 style='border-left:none'>COSTO TOTAL</td>
  </tr>
  <tr height=21 style='height:15.75pt'>
-  <td height=21 class=xl6716165 style='height:15.75pt;border-top:none'>&nbsp;</td>
-  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
-  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
-  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
-  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
-  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
- </tr>
- <tr height=21 style='height:15.75pt'>
-  <td height=21 class=xl6716165 style='height:15.75pt;border-top:none'>&nbsp;</td>
-  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
-  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
-  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td height=21 class=xl6716165 style='height:15.75pt;border-top:none'>&nbsp;{{$claves->get(0)}}</td>
+  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;{{$nombres->get(0)}}</td>
+  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;{{$cantidades->get(0)}}</td>
+  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;{{$unidades->get(0)}}</td>
   <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
   <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
  </tr>
  <tr height=21 style='height:15.75pt'>
-  <td height=21 class=xl6716165 style='height:15.75pt;border-top:none'>&nbsp;</td>
-  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
-  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
-  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td height=21 class=xl6716165 style='height:15.75pt;border-top:none'>&nbsp;{{$claves->get(1)}}</td>
+  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;{{$nombres->get(1)}}</td>
+  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;{{$cantidades->get(1)}}</td>
+  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;{{$unidades->get(1)}}</td>
   <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
   <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
  </tr>
  <tr height=21 style='height:15.75pt'>
-  <td height=21 class=xl6716165 style='height:15.75pt;border-top:none'>&nbsp;</td>
+  <td height=21 class=xl6716165 style='height:15.75pt;border-top:none'>&nbsp;{{$claves->get(2)}}</td>
+  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;{{$nombres->get(2)}}</td>
+  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;{{$cantidades->get(2)}}</td>
+  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;{{$unidades->get(2)}}</td>
   <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
   <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
-  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 class=xl6716165 style='height:15.75pt;border-top:none'>&nbsp;{{$claves->get(3)}}</td>
+  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;{{$nombres->get(3)}}</td>
+  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;{{$cantidades->get(3)}}</td>
+  <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;{{$unidades->get(3)}}</td>
   <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
   <td class=xl6716165 style='border-top:none;border-left:none'>&nbsp;</td>
  </tr>

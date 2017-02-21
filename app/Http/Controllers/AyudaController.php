@@ -20,7 +20,7 @@ class AyudaController extends Controller
   public function index(Request $request)
   {
 
-          return view('almacen.ayuda.index');
+    return view('almacen.ayuda.index');
 
 
   }
@@ -28,6 +28,6 @@ class AyudaController extends Controller
 
   public function show($id)
   {
-      return view("almacen.ayuda.show");
+    return view("almacen.ayuda.show");
   }
 }

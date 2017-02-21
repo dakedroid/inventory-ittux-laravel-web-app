@@ -50,6 +50,7 @@
     </div>
 
     <div  ALIGN="center" class="row">
-         <a href="/pdf"> <button class="btn btn-primary" type="submit">Generar</button>
+              <!--<a href="/pdf"> <button class="btn btn-primary" type="submit">Generar</button></a>-->
+             <a href="{{url('almacen/carrito/create/')}}"> <button class="btn btn-primary" type="submit">Generar</button></a>
     </div>
 @endsection

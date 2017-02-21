@@ -2,9 +2,9 @@
 @section('contenido')
 <div>
 	<h3>Listado de historial de articulos en salidas</h3>
-	<table WIDTH="100%" class="table table-condensed">
+	<table WIDTH="100%" class="table table-condensed" >
 		<th WIDTH="50%">@include('almacen.historial_salida.search')</th>
-		<th WIDTH="50%"></th>
+		<th WIDTH="50%"><a href="{{url('almacen/historial_salida/create/')}}"> <button class="btn btn-primary" type="submit">Generar</button></a></th>
 	</table>
 </div>
 <div ALIGN="center" class="row">

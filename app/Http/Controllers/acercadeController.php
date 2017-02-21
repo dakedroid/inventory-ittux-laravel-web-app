@@ -12,22 +12,20 @@ use DB;
 class acercadeController extends Controller
 {
 
-  /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function index(Request $request)
-  {
+    /**
+        * Display a listing of the resource.
+        *
+        * @return \Illuminate\Http\Response
+    */
 
-          return view('almacen.acercade.index');
+    public function index(Request $request)
+    {
+        return view('almacen.acercade.index');
+    }
 
-
-  }
-
-
-  public function show($id)
-  {
-      return view("almacen.acercade.show");
-  }
+    public function show($id)
+    {
+        return view("almacen.acercade.show");
+    }
+    
 }

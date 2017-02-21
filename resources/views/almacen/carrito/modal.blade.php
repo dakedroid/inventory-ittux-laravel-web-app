@@ -11,6 +11,7 @@ role="dialog" tabindex="-1" id="modal-delete-{{$cat->clave}}">
                 <h4 class="modal-title">Eliminar</h4>
 			</div>
 			<div class="modal-body">
+				
 				<p>Confirme si desea Eliminar</p>
 			</div>
 			<div class="modal-footer">

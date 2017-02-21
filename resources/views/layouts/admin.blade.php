@@ -27,9 +27,9 @@
         <!-- Logo -->
         <a href="#" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>S.I</b></span>
+          <span class="logo-mini"><b>S.A</b></span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Sistema Inventario</b></span>
+          <span class="logo-lg"><b>Sistema Almacen</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -80,7 +80,9 @@
         <section class="sidebar">
           <!-- Sidebar user panel -->
 
-          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <!-- sidebar menu: : style can be found in sidebar.less
+
+        -->
           <ul class="sidebar-menu">
             <li class="header"></li>
 
@@ -88,7 +90,7 @@
               <a href="{{url('almacen/inventario')}}">
                 <i class="fa fa-laptop"></i>
                 <span>Almacen</span>
-                <i class="fa fa-angle-left pull-right"></i>
+
               </a>
 
             </li>
@@ -113,7 +115,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                  <li><a href="{{url('almacen/salidas')}}"><i class="fa fa-circle-o"></i> Realizar salida</a></li>
+                  <li><a href="{{url('almacen/salidas')}}"><i class="fa fa-circle-o"></i> Realizar salida a Depto</a></li>
+                  <li><a href="{{url('almacen/salidas_prestamo')}}"><i class="fa fa-circle-o"></i> Realizar prestamo</a></li>
                   <li><a href="{{url('almacen/historial_salida')}}"><i class="fa fa-circle-o"></i> Historial</a></li>
 
 
@@ -124,7 +127,7 @@
               <a href="{{url('almacen/carrito')}}">
                 <i class="fa fa-shopping-cart"></i>
                 <span>Carrito</span>
-                 <i class="fa fa-angle-left pull-right"></i>
+
               </a>
 
             </li>
@@ -132,8 +135,8 @@
             <li class="treeview">
               <a href="{{url('almacen/prestamo')}}">
                 <i class="fa fa-th"></i>
-                <span>Prestamos</span>
-                 <i class="fa fa-angle-left pull-right"></i>
+                <span>Articulos Prestados</span>
+
               </a>
 
             </li>
@@ -213,7 +216,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> 1.0.0
         </div>
-        <strong>Copyright &copy; 2016-2020 <a href="#">ISC</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2017-2020 <a href="#">ISC</a>.</strong> All rights reserved.
       </footer>
 
 

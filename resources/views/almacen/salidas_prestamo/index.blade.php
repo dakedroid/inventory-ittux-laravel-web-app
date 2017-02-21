@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 @section('contenido')
 <div>
-	<h3>Listado de historial de articulos dados de alta</h3>
+	<h3>Listado de articulos para salidas a prestamos</h3>
 	<table WIDTH="100%" class="table table-condensed">
-		<th WIDTH="50%">@include('almacen.historial_altas.search')</th>
-		<th WIDTH="50%"><a href="{{url('almacen/historial_altas/create/')}}"> <button class="btn btn-primary" type="submit">Generar</button></a></th>
+		<th WIDTH="50%">@include('almacen.salidas_prestamo.search')</th>
+		<th WIDTH="50%"></th>
 	</table>
 </div>
 <div ALIGN="center" class="row">
@@ -19,7 +19,7 @@
 					<th>Tipo</th>
 					<th>Cantidad</th>
 					<th>Unidad</th>
-
+					<th>Opciones</th>
 				</thead>
 				@foreach($inventario as $cat)
 				<tr>
@@ -30,7 +30,10 @@
 					<td>{{$cat->tipo}}</td>
 					<td>{{$cat->cantidad}}</td>
 					<td>{{$cat->unidad}}</td>
+					<td>
+						<a href="{{URL::action('InventarioController@edit',$cat->num_progre)}}"><button class="btn btn-info">Carrito</button></a>
 
+					</td>
 				</tr>
 				@include('almacen.inventario.modal')
 				@endforeach

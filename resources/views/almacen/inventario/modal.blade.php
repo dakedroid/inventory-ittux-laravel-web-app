@@ -11,6 +11,14 @@ role="dialog" tabindex="-1" id="modal-delete-{{$cat->num_progre}}">
                 <h4 class="modal-title">Eliminar inventario</h4>
 			</div>
 			<div class="modal-body">
+				<div class="form-group">
+					<label for="nombre">Nombre inventario</label>
+					<input type="text" name="nombre" class="form-control" placeholder="Nombre inventario...">
+				</div>
+				<div class="form-group">
+						<label for="clave">Clave</label>
+						<input type="text" name="clave" class="form-control" placeholder="Clave...">
+				</div>
 				<p>Confirme si desea Eliminar la inventario</p>
 			</div>
 			<div class="modal-footer">

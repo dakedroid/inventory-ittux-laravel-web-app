@@ -19,15 +19,17 @@ class CarritoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index(Request $request)
     {
         if ($request)
         {
             $query=trim($request->get('searchText'));
-            $carrito=DB::table('carrito')->where('nombre','LIKE','%'.$query.'%')
 
+            $carrito=DB::table('carrito')->where('nombre','LIKE','%'.$query.'%')
             ->orderBy('num_progre','asc')
             ->paginate(10);
+
             return view('almacen.carrito.index',["carrito"=>$carrito,"searchText"=>$query]);
         }
     }
@@ -39,8 +41,7 @@ class CarritoController extends Controller
      */
     public function create()
     {
-        //
-    }
+      return view("almacen.carrito.create");    }
 
     /**
      * Store a newly created resource in storage.
@@ -51,7 +52,7 @@ class CarritoController extends Controller
     public function store(Request $request)
     {
         $carrito=new CarritoModel;
-      //  $carrito->num_progre=$request->get('num_progre');
+        //  $carrito->num_progre=$request->get('num_progre');
         $carrito->nombre=$request->get('nombre');
         $carrito->clave=$request->get('clave');
         $carrito->categoria=$request->get('categoria');
@@ -96,15 +97,24 @@ class CarritoController extends Controller
 
     {
 
-        
-        //$pdf = App::make('dompdf.wrapper');
-        $pdf = PDF::loadView('documentos.salidas')->setPaper('a4','portrait')->setWarnings(false);
-        return $pdf->stream();
+        $claves = DB::table('carrito')->pluck('clave');
+        $nombres = DB::table('carrito')->pluck('nombre');
+        $cantidades = DB::table('carrito')->pluck('cantidad');
+        $unidades = DB::table('carrito')->pluck('unidad');
+        $portador = DB::table('carrito')->pluck('portador')->first();
 
+        $pdf = PDF::loadView('documentos.prestamos',[
+            'claves'=>$claves,
+            'nombres'=>$nombres,
+            'cantidades'=>$cantidades,
+            'unidades'=>$unidades,
+            'portador'=>$portador
+        ])->setPaper('a4','portrait');
+
+        return $pdf->stream();
 
         //$pdf = PDF::loadView('documentos.entradas');
         //return $pdf->download('archivo.pdf');
-
     }
 
 
@@ -116,16 +126,15 @@ class CarritoController extends Controller
      */
     public function destroy($id)
     {
-        echo $id;
+
         $inventario=InventarioModel::where('clave', '=' ,$id)->firstOrFail();
         $carrito=CarritoModel::where('clave', '=' ,$id)->firstOrFail();
         $inventario->cantidad= $inventario->cantidad + $carrito->cantidad;
-        //$carrito->cantidad = 0;
         $inventario->update();
 
         DB::table('carrito')->where('clave', $id)->delete();
-
         $carrito->update();
+
         DB::table('historial_salidas')->where('clave', $id)->delete();
         return Redirect::to('almacen/inventario');
     }
