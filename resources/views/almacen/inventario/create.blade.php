@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 @section('contenido')
   <div class="row">
+    <div class="" align="right">
+        <img   align="right" class="img-responsive" src="{{asset ('img/ico-altas.png')}}" width="200" height="200">
+    </div>
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 			<h3>Nuevo Articulo</h3>
 			@if (count($errors)>0)

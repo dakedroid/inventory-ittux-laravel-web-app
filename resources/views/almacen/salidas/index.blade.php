@@ -1,12 +1,16 @@
 @extends('layouts.admin')
 @section('contenido')
-<div>
+<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 	<h3>Listado de articulos para salidas</h3>
 	<table WIDTH="100%" class="table table-condensed">
 		<th WIDTH="50%">@include('almacen.salidas.search')</th>
-		<th WIDTH="50%"></th>
+		<th WIDTH="20%"></th>
 	</table>
 </div>
+<div class="" align="right">
+    <img   align="right" class="img-responsive" src="{{asset ('img/ico-salidas.png')}}" width="150" height="150">
+</div>
+
 <div ALIGN="center" class="row">
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<div class="table-responsive">

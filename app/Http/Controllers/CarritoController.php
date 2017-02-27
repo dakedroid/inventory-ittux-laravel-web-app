@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\CarritoModel;
 use App\InventarioModel;
+use App\PrestamoModel;
 use App\Http\Requests\Historial_salidasFormRequest;
 use App\Historial_salidasModel;
 use Illuminate\Support\Facades\Redirect;
@@ -14,6 +15,10 @@ use App;
 
 class CarritoController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
     /**
      * Display a listing of the resource.
      *
@@ -96,25 +101,17 @@ class CarritoController extends Controller
     public function update(Request $request)
 
     {
+        $destinos = DB::table('carrito')->pluck('destino');
 
-        $claves = DB::table('carrito')->pluck('clave');
-        $nombres = DB::table('carrito')->pluck('nombre');
-        $cantidades = DB::table('carrito')->pluck('cantidad');
-        $unidades = DB::table('carrito')->pluck('unidad');
-        $portador = DB::table('carrito')->pluck('portador')->first();
+        if ($destinos->get(0) == "departamento"){
+            
+            return view("almacen.carrito.create");  
 
-        $pdf = PDF::loadView('documentos.prestamos',[
-            'claves'=>$claves,
-            'nombres'=>$nombres,
-            'cantidades'=>$cantidades,
-            'unidades'=>$unidades,
-            'portador'=>$portador
-        ])->setPaper('a4','portrait');
+         }else if ($destinos->get(0) == "prestamo"){
 
-        return $pdf->stream();
+            return Redirect::to('/pdf/prestamo');
 
-        //$pdf = PDF::loadView('documentos.entradas');
-        //return $pdf->download('archivo.pdf');
+        }     
     }
 
 

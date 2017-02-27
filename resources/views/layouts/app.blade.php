@@ -8,17 +8,22 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Sistema de inventario 1.0</title>
-
+    <title>Sistema Almacen 1.0</title>
+    <link rel="apple-touch-icon" href="{{asset ('img/apple-touch-icon.png')}}">
+    <link rel="shortcut icon" href="{{asset ('img/favicon.ico')}}">
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
-        window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token(),]); ?>
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
     </script>
 </head>
 <body>
+
+
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -33,12 +38,10 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        Sistemas Inventario
-                    </a>
+                    <h4>Sistema Almacen 1.0</h4>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <div class="collapse navbar-collapse"  id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
@@ -48,9 +51,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Registrar</a></li>
-
+                            <!--<li><a href="{{ url('/login') }}">Login</a></li>
+                            <li><a href="{{ url('/register') }}">Register</a></li>-->
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -58,23 +60,17 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                  <li>
-                                    <a href="{{ url('/logout') }}"
-                                        onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                        Cerrar Sesion
-                                    </a>
+                                    <li>
+                                        <a href="{{ url('/logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Cerrar Sesión
+                                        </a>
 
-                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                  </li>
-
-
-                                    <!--<li>
-
-                                        <a href="{{ url('/logout') }}"  <i class="fa fa-btn fa-sing-out"></i>Cerrar Sesion</a>
-                                    </li>-->
+                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
                                 </ul>
                             </li>
                         @endif

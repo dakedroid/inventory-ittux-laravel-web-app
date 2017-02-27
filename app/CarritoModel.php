@@ -16,7 +16,8 @@ class CarritoModel extends Model
       'tipo',
       'cantidad',
       'unidad',
-      'portador'
+      'portador',
+      'destino'
       ];
       protected $guarded=[
 

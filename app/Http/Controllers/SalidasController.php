@@ -7,11 +7,16 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\InventarioFormRequest;
 use App\InventarioModel;
 use App\CarritoModel;
+use App\Historial_salidasModel;
 use DB;
 
 class SalidasController extends Controller
 {
 
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
   /**
    * Display a listing of the resource.
    *
@@ -50,16 +55,10 @@ class SalidasController extends Controller
    */
   public function store(Request $request)
   {
-      $inventario = new InventarioModel ;
-      $inventario->clave=$request->get('clave');
-      $inventario->nombre=$request->get('nombre');
-      $inventario->categoria=$request->get('categoria');
-      $inventario->tipo="";
-      $inventario->cantidad=$request->get('cantidad');
-      $inventario->unidad=$request->get('unidad');
-      $inventario->save();
-
-      return Redirect::to('almacen/inventario');
+      
+      DB::table('carrito')->delete();
+  
+      return Redirect::to('/almacen/prestamo/');
   }
 
   /**
@@ -95,7 +94,7 @@ class SalidasController extends Controller
   public function update(Request $request, $id)
   {
 
-      $inventario=InventarioModel::findOrFail($id);
+       $inventario=InventarioModel::findOrFail($id);
       $inventario->clave=$request->get('clave');
       $inventario->nombre=$request->get('nombre');
       $inventario->categoria=$request->get('categoria');
@@ -104,7 +103,7 @@ class SalidasController extends Controller
       $inventario->unidad=$request->get('unidad');
       $inventario->update();
 
-      $carrito=new CarritoModel;
+      $carrito = new CarritoModel;
       $carrito->num_progre=$request->get('num_progre');
       $carrito->clave=$request->get('clave');
       $carrito->nombre=$request->get('nombre');
@@ -113,8 +112,21 @@ class SalidasController extends Controller
       $carrito->cantidad=$request->get('c_prestar');
       $carrito->unidad=$request->get('unidad');
       $carrito->portador=$request->get('portador');
-
+      $carrito->destino="departamento";
       $carrito->save();
+
+      $historial_s = new Historial_salidasModel;
+      $historial_s->clave=$request->get('clave');
+      $historial_s->nombre=$request->get('nombre');
+      $historial_s->categoria=$request->get('categoria');
+      $historial_s->tipo="";
+      $historial_s->cantidad=$request->get('c_prestar');
+      $historial_s->unidad=$request->get('unidad');
+      $historial_s->portador=$request->get('portador');
+      $historial_s->destino="departamento";
+      $historial_s->created_at="2017-01-18 04:15:21";
+      $historial_s->save();
+
       return Redirect::to('almacen/carrito');
 
   }
@@ -127,13 +139,7 @@ class SalidasController extends Controller
    */
   public function destroy($id)
   {
-      //$inventario =inventario Model::findOrFail($id);
-      //$query="DELETE FROM inventario Model where num_progre='$id'";
-
-      DB::table('inventario')->where('num_progre', $id)->delete();
-      //$inventario ->condicion='0';
-      //$inventario ->update();
-      return Redirect::to('almacen/inventario');
+    //
   }
 
 }

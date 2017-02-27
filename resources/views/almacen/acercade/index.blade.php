@@ -2,16 +2,14 @@
 @section('contenido')
 <div>
 	<h3>ACERCA DE ....</h3>
-	<br>
 	<h3>Sistema de inventario 1.0</h3>
-	<br>
 	<br>
 	<h4>Ingenieria en Sistemas Computacionales</h4>
 	<br>
 	<table WIDTH="100%" class="table table-condensed">
 			<thead>
-		<th WIDTH="50%">DESARROLLADORES</th>
-		<th WIDTH="50%">ASESOR</th>
+		<th WIDTH="40%">DESARROLLADORES</th>
+		<th WIDTH="40%">ASESOR</th>
 			<thead>
 				<tr>
 					<td>Kevin David Molina Gomez</td>
@@ -21,10 +19,10 @@
 					<td>Jorge Luis Sixto Roberto</td>
 				</tr>
 	</table>
-	<br>
+	<div align="center">
+		<img  align="center" class="img-responsive" src="{{asset ('img/logo.png')}}" width="150" height="150">
+	</div>
 
-	<br>
-	<br>
 </div>
 
 @endsection

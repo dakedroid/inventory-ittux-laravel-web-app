@@ -1,12 +1,14 @@
 @extends('layouts.admin')
 @section('contenido')
-
   <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
   		<h3>Listado de articulos añadidos al carrito </h3>
       <table WIDTH="100%" class="table table-condensed">
         <th WIDTH="50%">@include('almacen.carrito.search')</th>
-        <th WIDTH="50%"></th>
+        <th WIDTH="20%"></th>
       </table>
+</div>
+<div class="" align="right">
+    <img   align="right" class="img-responsive" src="{{asset ('img/ico-carrito.png')}}" width="100" height="100">
 </div>
 
   <div ALIGN="center" class="row">
@@ -50,7 +52,7 @@
     </div>
 
     <div  ALIGN="center" class="row">
-              <!--<a href="/pdf"> <button class="btn btn-primary" type="submit">Generar</button></a>-->
-             <a href="{{url('almacen/carrito/create/')}}"> <button class="btn btn-primary" type="submit">Generar</button></a>
+          <a href="{{url('/generar_salida')}}" target="_blank" > <button class="btn btn-primary" type="submit">Generar Reporte</button></a> 
+          <a href="{{url('/terminar_salida')}}" > <button class="btn btn-danger" type="submit">Realizar Salida</button></a>
     </div>
 @endsection

@@ -7,10 +7,17 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\InventarioFormRequest;
 use App\InventarioModel;
 use App\CarritoModel;
+use App\Historial_salidasModel;
+use App\PrestamoModel;
 use DB;
 
 class Salidas_prestamoController extends Controller
 {
+
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
 
   /**
    * Display a listing of the resource.
@@ -109,12 +116,36 @@ class Salidas_prestamoController extends Controller
       $carrito->clave=$request->get('clave');
       $carrito->nombre=$request->get('nombre');
       $carrito->categoria=$request->get('categoria');
-      $carrito->tipo="";
+      $carrito->tipo="no definido";
       $carrito->cantidad=$request->get('c_prestar');
       $carrito->unidad=$request->get('unidad');
       $carrito->portador=$request->get('portador');
-
+      $carrito->destino="prestamo";
       $carrito->save();
+
+      $historial_s = new Historial_salidasModel;
+      $historial_s->clave=$request->get('clave');
+      $historial_s->nombre=$request->get('nombre');
+      $historial_s->categoria=$request->get('categoria');
+      $historial_s->tipo="";
+      $historial_s->cantidad=$request->get('c_prestar');
+      $historial_s->unidad=$request->get('unidad');
+      $historial_s->portador=$request->get('portador');
+      $historial_s->destino="prestamo";
+      $historial_s->created_at="2017-01-18 04:15:21";
+      $historial_s->save();
+
+      $prestamo=new PrestamoModel;
+      $prestamo->nombre=$request->get('nombre');
+      $prestamo->clave=$request->get('clave');
+      $prestamo->categoria=$request->get('categoria');
+      $prestamo->tipo="no definido";
+      $prestamo->cantidad=$request->get('c_prestar');
+      $prestamo->unidad=$request->get('unidad');
+      $prestamo->portador=$request->get('portador');
+      $prestamo->created_at="2017-01-18 04:15:21";
+      $prestamo->save();
+
       return Redirect::to('almacen/carrito');
 
   }
@@ -127,13 +158,7 @@ class Salidas_prestamoController extends Controller
    */
   public function destroy($id)
   {
-      //$inventario =inventario Model::findOrFail($id);
-      //$query="DELETE FROM inventario Model where num_progre='$id'";
-
-      DB::table('inventario')->where('num_progre', $id)->delete();
-      //$inventario ->condicion='0';
-      //$inventario ->update();
-      return Redirect::to('almacen/inventario');
+    //
   }
 
 }

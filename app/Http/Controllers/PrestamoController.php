@@ -5,12 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\CarritoModel;
 use App\InventarioModel;
+use App\PrestamoModel;
 use App\Http\Requests\Historial_salidasFormRequest;
 use App\Historial_salidasModel;
 use Illuminate\Support\Facades\Redirect;
 use DB;
+use PDF;
+
 class PrestamoController extends Controller
 {
+
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
+
   public function index(Request $request)
   {
       if ($request)
@@ -85,7 +94,22 @@ class PrestamoController extends Controller
    */
   public function update(Request $request, $id)
   {
-      //
+     $claves = DB::table('carrito')->pluck('clave');
+      $nombres = DB::table('carrito')->pluck('nombre');
+      $cantidades = DB::table('carrito')->pluck('cantidad');
+      $unidades = DB::table('carrito')->pluck('unidad');
+      $portador = DB::table('carrito')->pluck('portador')->first();
+
+      $pdf = PDF::loadView('documentos.prestamos',[
+            'claves'=>$claves,
+            'nombres'=>$nombres,
+            'cantidades'=>$cantidades,
+            'unidades'=>$unidades,
+            'portador'=>$portador
+      ])->setPaper('a4','portrait');
+
+ 
+      return $pdf->stream();
   }
 
   /**
@@ -96,14 +120,11 @@ class PrestamoController extends Controller
    */
   public function destroy($id)
   {
-      $inventario=InventarioModel::findOrFail($id);
-      $carrito=CarritoModel::findOrFail($id);
-      $inventario->cantidad= $inventario->cantidad + $carrito->cantidad;
-      //$carrito->cantidad = 0;
+      $prestamo=PrestamoModel::where('clave', '=' ,$id)->firstOrFail();
+      $inventario=InventarioModel::where('clave', '=' ,$id)->firstOrFail();
+      $inventario->cantidad= $inventario->cantidad + $prestamo->cantidad;
       $inventario->update();
-
-      DB::table('carrito')->where('num_progre', $id)->delete();
-      $carrito->update();
+      DB::table('prestamo')->where('clave', $id)->delete();  
       return Redirect::to('almacen/inventario');
   }
 }

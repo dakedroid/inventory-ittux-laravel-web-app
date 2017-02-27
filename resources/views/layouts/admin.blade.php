@@ -46,7 +46,7 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <small class="bg-green">Online</small>
+                  <small >Cerrar Sesion: {{ Auth::user()->name }}</small>
                   <span class="hidden-xs"></span>
                 </a>
                 <ul class="dropdown-menu">
@@ -54,17 +54,28 @@
                   <li class="user-header">
 
                     <p>
-                      Desarrollando Software
-                      <small></small>
+                    Usuario: <br>    {{ Auth::user()->name }}
+
+                      <small><div class="" align="center">
+                          <img   align="center" class="img-responsive" src="{{asset ('img/ico-user.png')}}" width="90" height="90">
+                      </div></small>
                     </p>
                   </li>
 
                   <!-- Menu Footer-->
                   <li class="user-footer">
 
-                    <div class="pull-right">
-                      <a href="{{url('/logout')}}" class="btn btn-default btn-flat Auth::logout();">Cerrar</a>
-                    </div>
+                    <li class="dropdown">
+
+                                <a href="{{ url('/logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Cerrar Sesión
+                                </a>
+
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                   </li>
                 </ul>
               </li>
@@ -84,7 +95,7 @@
 
         -->
           <ul class="sidebar-menu">
-            <li class="header"></li>
+
 
             <li class="treeview">
               <a href="{{url('almacen/inventario')}}">
@@ -150,7 +161,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                <li><a href="{{url('almacen/usuario/create')}}"><i class="fa fa-circle-o"></i> Nuevo Usuarios</a></li>
+                <li><a href="{{url('almacen/usuario')}}"><i class="fa fa-circle-o"></i>Listado de Usuarios</a></li>
 
               </ul>
             </li>
