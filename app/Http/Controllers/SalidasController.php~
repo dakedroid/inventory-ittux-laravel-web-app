@@ -8,11 +8,9 @@ use App\Http\Requests\InventarioFormRequest;
 use App\InventarioModel;
 use App\CarritoModel;
 use App\Historial_salidasModel;
-use App\PrestamoModel;
 use DB;
-use PDF;
 
-class Salidas_prestamoController extends Controller
+class SalidasController extends Controller
 {
 
   /**
@@ -20,11 +18,6 @@ class Salidas_prestamoController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-
- public function __construct()
-  {
-      $this->middleware('auth');
-  }
   public function index(Request $request)
   {
       if ($request)
@@ -33,7 +26,7 @@ class Salidas_prestamoController extends Controller
           $inventario =DB::table('inventario')->where('nombre','LIKE','%'.$query.'%')
           ->orderBy('num_progre','desc')
           ->paginate(10);
-          return view('almacen.salidas_prestamo.index',["inventario"=>$inventario ,"searchText"=>$query]);
+          return view('almacen.salidas.index',["inventario"=>$inventario ,"searchText"=>$query]);
       }
 /*
 	<a href="" data-target="#modal-delete-{{$cat->num_progre}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
@@ -58,22 +51,25 @@ class Salidas_prestamoController extends Controller
    */
   public function store(Request $request)
   {
-      $claves = DB::table('carrito')->pluck('clave');
-      $nombres = DB::table('carrito')->pluck('nombre');
-      $cantidades = DB::table('carrito')->pluck('cantidad');
-      $unidades = DB::table('carrito')->pluck('unidad');
-      $portador = DB::table('carrito')->pluck('portador')->first();
 
-      $pdf = PDF::loadView('documentos.prestamos',[
-            'claves'=>$claves,
-            'nombres'=>$nombres,
-            'cantidades'=>$cantidades,
-            'unidades'=>$unidades,
-            'portador'=>$portador
-      ])->setPaper('a4','portrait');
+	/*
+      $inventario = new InventarioModel ;
+      $inventario->clave=$request->get('clave');
+      $inventario->nombre=$request->get('nombre');
+      $inventario->categoria=$request->get('categoria');
+      $inventario->tipo="";
+      $inventario->cantidad=$request->get('cantidad');
+      $inventario->unidad=$request->get('unidad');
+      $inventario->save();
 
- 
-      return $pdf->stream();
+      return Redirect::to('almacen/inventario');
+*/
+
+	DB::table('carrito')->delete();
+	
+       return Redirect::to('/almacen/prestamo/');
+
+	
   }
 
   /**
@@ -95,7 +91,7 @@ class Salidas_prestamoController extends Controller
    */
   public function edit($id)
   {
-      return view("almacen.salidas_prestamo.edit",["salidas_prestamo"=>InventarioModel::findOrFail($id)]);
+      return view("almacen.salidas.edit",["salidas"=>InventarioModel::findOrFail($id)]);
 
   }
 
@@ -118,16 +114,16 @@ class Salidas_prestamoController extends Controller
       $inventario->unidad=$request->get('unidad');
       $inventario->update();
 
-      $carrito=new CarritoModel;
+      $carrito = new CarritoModel;
       $carrito->num_progre=$request->get('num_progre');
       $carrito->clave=$request->get('clave');
       $carrito->nombre=$request->get('nombre');
       $carrito->categoria=$request->get('categoria');
-      $carrito->tipo="no definido";
+      $carrito->tipo="";
       $carrito->cantidad=$request->get('c_prestar');
       $carrito->unidad=$request->get('unidad');
       $carrito->portador=$request->get('portador');
-      $carrito->destino="prestamo";
+      $carrito->destino="departamento";
       $carrito->save();
 
       $historial_s = new Historial_salidasModel;
@@ -138,20 +134,9 @@ class Salidas_prestamoController extends Controller
       $historial_s->cantidad=$request->get('c_prestar');
       $historial_s->unidad=$request->get('unidad');
       $historial_s->portador=$request->get('portador');
-      $historial_s->destino="prestamo";
+      $historial_s->destino="departamento";
       $historial_s->created_at="2017-01-18 04:15:21";
       $historial_s->save();
-
-      $prestamo=new PrestamoModel;
-      $prestamo->nombre=$request->get('nombre');
-      $prestamo->clave=$request->get('clave');
-      $prestamo->categoria=$request->get('categoria');
-      $prestamo->tipo="no definido";
-      $prestamo->cantidad=$request->get('c_prestar');
-      $prestamo->unidad=$request->get('unidad');
-      $prestamo->portador=$request->get('portador');
-      $prestamo->created_at="2017-01-18 04:15:21";
-      $prestamo->save();
 
       return Redirect::to('almacen/carrito');
 
@@ -165,7 +150,7 @@ class Salidas_prestamoController extends Controller
    */
   public function destroy($id)
   {
-
+    //
   }
 
 }

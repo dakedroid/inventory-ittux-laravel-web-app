@@ -10,7 +10,6 @@ use App\CarritoModel;
 use App\Historial_salidasModel;
 use App\PrestamoModel;
 use DB;
-use PDF;
 
 class Salidas_prestamoController extends Controller
 {
@@ -20,11 +19,6 @@ class Salidas_prestamoController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-
- public function __construct()
-  {
-      $this->middleware('auth');
-  }
   public function index(Request $request)
   {
       if ($request)
@@ -58,22 +52,16 @@ class Salidas_prestamoController extends Controller
    */
   public function store(Request $request)
   {
-      $claves = DB::table('carrito')->pluck('clave');
-      $nombres = DB::table('carrito')->pluck('nombre');
-      $cantidades = DB::table('carrito')->pluck('cantidad');
-      $unidades = DB::table('carrito')->pluck('unidad');
-      $portador = DB::table('carrito')->pluck('portador')->first();
+      $inventario = new InventarioModel ;
+      $inventario->clave=$request->get('clave');
+      $inventario->nombre=$request->get('nombre');
+      $inventario->categoria=$request->get('categoria');
+      $inventario->tipo="";
+      $inventario->cantidad=$request->get('cantidad');
+      $inventario->unidad=$request->get('unidad');
+      $inventario->save();
 
-      $pdf = PDF::loadView('documentos.prestamos',[
-            'claves'=>$claves,
-            'nombres'=>$nombres,
-            'cantidades'=>$cantidades,
-            'unidades'=>$unidades,
-            'portador'=>$portador
-      ])->setPaper('a4','portrait');
-
- 
-      return $pdf->stream();
+      return Redirect::to('almacen/inventario');
   }
 
   /**
@@ -166,6 +154,14 @@ class Salidas_prestamoController extends Controller
   public function destroy($id)
   {
 
+      //  DB::table('historial_salidas')->where('clave', $id)->delete();
+      //$inventario =inventario Model::findOrFail($id);
+      //$query="DELETE FROM inventario Model where num_progre='$id'";
+
+      //DB::table('inventario')->where('num_progre', $id)->delete();
+      //$inventario ->condicion='0';
+      //$inventario ->update();
+      //return Redirect::to('almacen/inventario');
   }
 
 }

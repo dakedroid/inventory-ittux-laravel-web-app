@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\CarritoModel;
 use App\InventarioModel;
-use App\PrestamoModel;
 use App\Http\Requests\Historial_salidasFormRequest;
 use App\Historial_salidasModel;
 use Illuminate\Support\Facades\Redirect;
@@ -13,11 +12,6 @@ use DB;
 use PDF;
 class PrestamoController extends Controller
 {
-
- public function __construct()
-  {
-      $this->middleware('auth');
-  }
   public function index(Request $request)
   {
       if ($request)
@@ -37,7 +31,7 @@ class PrestamoController extends Controller
    */
   public function create()
   {
-     
+      //
   }
 
   /**
@@ -48,7 +42,17 @@ class PrestamoController extends Controller
    */
   public function store(Request $request)
   {
-
+      $carrito=new CarritoModel;
+    //  $carrito->num_progre=$request->get('num_progre');
+      $carrito->nombre=$request->get('nombre');
+      $carrito->clave=$request->get('clave');
+      $carrito->categoria=$request->get('categoria');
+      $carrito->tipo=$request->get('tipo');
+      $carrito->cantidad=($request->get('cantidad'))-($request->get('c_prestar'));
+      $carrito->unidad=$request->get('unidad');
+      $carrito->portador=$request->get('portador');
+      $carrito->save();
+      return Redirect::to('almacen/carrito');
   }
 
   /**
@@ -82,7 +86,23 @@ class PrestamoController extends Controller
    */
   public function update(Request $request)
   {
+      $claves = DB::table('carrito')->pluck('clave');
+      $nombres = DB::table('carrito')->pluck('nombre');
+      $cantidades = DB::table('carrito')->pluck('cantidad');
+      $unidades = DB::table('carrito')->pluck('unidad');
+      $portador = DB::table('carrito')->pluck('portador')->first();
 
+      $pdf = PDF::loadView('documentos.prestamos',[
+            'claves'=>$claves,
+            'nombres'=>$nombres,
+            'cantidades'=>$cantidades,
+            'unidades'=>$unidades,
+            'portador'=>$portador
+      ])->setPaper('a4','portrait');
+
+      DB::table('carrito')->delete();  
+
+      return $pdf->stream();
   }
 
   /**

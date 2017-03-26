@@ -20,10 +20,6 @@ class CarritoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
- public function __construct()
-  {
-      $this->middleware('auth');
-  }
 
     public function index(Request $request)
     {
@@ -57,7 +53,18 @@ class CarritoController extends Controller
      */
     public function store(Request $request)
     {
-
+        $carrito=new CarritoModel;
+        //  $carrito->num_progre=$request->get('num_progre');
+        $carrito->nombre=$request->get('nombre');
+        $carrito->clave=$request->get('clave');
+        $carrito->categoria=$request->get('categoria');
+        $carrito->tipo=$request->get('tipo');
+        $carrito->cantidad=($request->get('cantidad'))-($request->get('c_prestar'));
+        $carrito->unidad=$request->get('unidad');
+        $carrito->portador=$request->get('portador');
+	$carrito->destino=$request->get('destino');
+        $carrito->save();
+        return Redirect::to('almacen/carrito');
     }
 
     /**
@@ -94,7 +101,7 @@ class CarritoController extends Controller
     {
 
 
-	   $destinos = DB::table('carrito')->pluck('destino');
+	$destinos = DB::table('carrito')->pluck('destino');
 
         if ($destinos->get(0) == "departamento"){
             

@@ -1,14 +1,11 @@
 @extends('layouts.admin')
 @section('contenido')
-<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-	<h3>Listado de articulos para salidas a prestamos</h3>
+<div>
+	<h3>Listado de articulos para salidas como prestamos</h3>
 	<table WIDTH="100%" class="table table-condensed">
 		<th WIDTH="50%">@include('almacen.salidas_prestamo.search')</th>
-		<th WIDTH="20%"></th>
+		<th WIDTH="50%"></th>
 	</table>
-</div>
-<div class="" align="right">
-    <img   align="right" class="img-responsive" src="{{asset ('img/ico-salidas.png')}}" width="150" height="150">
 </div>
 <div ALIGN="center" class="row">
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -34,7 +31,7 @@
 					<td>{{$cat->cantidad}}</td>
 					<td>{{$cat->unidad}}</td>
 					<td>
-						<a href="{{URL::action('InventarioController@edit',$cat->num_progre)}}"><button class="btn btn-info">Carrito</button></a>
+						<a href="{{URL::action('Salidas_prestamoController@edit',$cat->num_progre)}}"><button class="btn btn-info">Carrito</button></a>
 
 					</td>
 				</tr>

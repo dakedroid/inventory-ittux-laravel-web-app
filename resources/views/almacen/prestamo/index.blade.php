@@ -20,7 +20,6 @@
             <th>Cantidad</th>
             <th>Unidad</th>
             <th>Portador</th>
-              <th>Fecha</th>
   					<th>Opciones</th>
   				</thead>
                  @foreach ($prestamo as $cat)
@@ -31,11 +30,9 @@
             <td>{{ $cat->cantidad}}</td>
             <td>{{ $cat->unidad}}</td>
             <td>{{ $cat->portador}}</td>
-          <td>Opciones</td>
-          <td>{{$cat->created_at}}</td>
   					<td>
 
-             <a href="" data-target="#modal-delete-{{$cat->num_progre}}" data-toggle="modal"><button class="btn btn-danger">Cancelar</button></a>
+             <a href="" data-target="#modal-delete-{{$cat->clave}}" data-toggle="modal"><button class="btn btn-danger">Cancelar</button></a>
 
             </td>
   				</tr>

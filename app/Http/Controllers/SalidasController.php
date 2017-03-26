@@ -9,11 +9,13 @@ use App\InventarioModel;
 use App\CarritoModel;
 use App\Historial_salidasModel;
 use DB;
+use PDF;
 
 class SalidasController extends Controller
 {
 
-  public function __construct()
+
+ public function __construct()
   {
       $this->middleware('auth');
   }
@@ -55,10 +57,24 @@ class SalidasController extends Controller
    */
   public function store(Request $request)
   {
-      
-      DB::table('carrito')->delete();
-  
-      return Redirect::to('/almacen/prestamo/');
+
+	    $claves = DB::table('carrito')->pluck('clave');
+      $nombres = DB::table('carrito')->pluck('nombre');
+      $cantidades = DB::table('carrito')->pluck('cantidad');
+      $unidades = DB::table('carrito')->pluck('unidad');
+      $portador = DB::table('carrito')->pluck('portador')->first();
+
+      $pdf = PDF::loadView('documentos.salidas',[
+            'claves'=>$claves,
+            'nombres'=>$nombres,
+            'cantidades'=>$cantidades,
+            'unidades'=>$unidades,
+            'portador'=>$portador
+      ])->setPaper('a4','portrait');
+
+ 
+      return $pdf->stream();
+	
   }
 
   /**
@@ -80,7 +96,7 @@ class SalidasController extends Controller
    */
   public function edit($id)
   {
-      return view("almacen.inventario.edit",["inventario"=>InventarioModel::findOrFail($id)]);
+      return view("almacen.salidas.edit",["salidas"=>InventarioModel::findOrFail($id)]);
 
   }
 
@@ -94,7 +110,9 @@ class SalidasController extends Controller
   public function update(Request $request, $id)
   {
 
-       $inventario=InventarioModel::findOrFail($id);
+    
+
+      $inventario=InventarioModel::findOrFail($id);
       $inventario->clave=$request->get('clave');
       $inventario->nombre=$request->get('nombre');
       $inventario->categoria=$request->get('categoria');
@@ -129,6 +147,7 @@ class SalidasController extends Controller
 
       return Redirect::to('almacen/carrito');
 
+    
   }
 
   /**
@@ -137,9 +156,12 @@ class SalidasController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
+  public function destroy()
   {
-    //
+      DB::table('carrito')->delete();
+  
+      return Redirect::to('/almacen/prestamo/');
+
   }
 
 }
