@@ -112,10 +112,19 @@
 
 											</select>
 										</div>
+
+										<div class="form-group">
+											<label for="costo_u">Costo Unitario</label>
+											<input type="text" name="costo_u" class="form-control"  placeholder="Costo Unitario...">
+
+										</div>
+
 										<div class="form-group" ALIGN="center" class="row">
 										<button class="btn btn-primary" type="submit">Guardar</button>
 										<button class="btn btn-danger" type="reset">Cancelar</button>
 										</div>
+
+										
 									</td>
 						      </table>
 

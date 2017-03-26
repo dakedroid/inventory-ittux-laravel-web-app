@@ -23,6 +23,7 @@ class Carrito extends Migration
           $table->string('unidad');
           $table->string('portador');
           $table->string('destino');
+          $table->string('costo_u');
         });
     }
 

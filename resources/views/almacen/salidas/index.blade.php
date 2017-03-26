@@ -32,7 +32,6 @@
 					<td>{{$cat->unidad}}</td>
 					<td>
 						<a href="{{URL::action('SalidasController@edit',$cat->num_progre)}}"><button class="btn btn-info">Carrito</button></a>
-
 					</td>
 				</tr>
 				@include('almacen.inventario.modal')

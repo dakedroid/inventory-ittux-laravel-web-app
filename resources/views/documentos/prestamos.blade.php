@@ -11,6 +11,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
 <!--table
 	{mso-displayed-decimal-separator:"\.";
 	mso-displayed-thousand-separator:"\,";}
+
 .xl1528695
 	{padding-top:1px;
 	padding-right:1px;
@@ -393,7 +394,7 @@ EXCEL -->
  </tr>
  <tr height=17 style='mso-height-source:userset;height:12.95pt'>
   <td colspan=3 height=17 class=xl6728695 style='height:12.95pt'>DEPTO
-  SOLICITANTE:</td>
+  SOLICITANTE: {{$portador}}</td>
   <td class=xl6528695></td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
@@ -414,74 +415,62 @@ EXCEL -->
   <td class=xl6528695></td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7028695 style='height:12.0pt'>No.</td>
+  <td height=16 class=xl7028695 style='height:12.0pt'>Clave</td>
   <td class=xl7128695 style='border-left:none'>ARTICULO</td>
   <td class=xl7028695>CANTIDAD</td>
   <td class=xl7228695>UNIDAD</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
+  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;{{$claves->get(0)}}</td>
+  <td class=xl7428695>&nbsp;{{str_limit($nombres->get(0), 18)}}</td>
+  <td class=xl7328695 style='border-top:none'>&nbsp;{{$cantidades->get(0)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{$unidades->get(0)}}</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
+  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;{{$claves->get(1)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{str_limit($nombres->get(1), 18)}}</td>
+  <td class=xl7328695 style='border-top:none'>&nbsp;{{$cantidades->get(1)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{$unidades->get(1)}}</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
+  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;{{$claves->get(2)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{str_limit($nombres->get(2), 18)}}</td>
+  <td class=xl7328695 style='border-top:none'>&nbsp;{{$cantidades->get(2)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{$unidades->get(2)}}</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
+  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;{{$claves->get(3)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{str_limit($nombres->get(3), 18)}}</td>
+  <td class=xl7328695 style='border-top:none'>&nbsp;{{$cantidades->get(3)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{$unidades->get(3)}}</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
+  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;{{$claves->get(4)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{str_limit($nombres->get(4), 18)}}</td>
+  <td class=xl7328695 style='border-top:none'>&nbsp;{{$cantidades->get(4)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{$unidades->get(4)}}</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
+  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;{{$claves->get(5)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{str_limit($nombres->get(5), 18)}}</</td>
+  <td class=xl7328695 style='border-top:none'>&nbsp;{{$cantidades->get(5)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{$unidades->get(5)}}</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
+  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;{{$claves->get(6)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{str_limit($nombres->get(6), 18)}}</td>
+  <td class=xl7328695 style='border-top:none'>&nbsp;{{$cantidades->get(6)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{$unidades->get(6)}}</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
- </tr>
- <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
- </tr>
- <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
+  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;{{$claves->get(7)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{str_limit($nombres->get(7), 18)}}</td>
+  <td class=xl7328695 style='border-top:none'>&nbsp;{{$cantidades->get(7)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{$unidades->get(7)}}</td>
  </tr>
  <tr height=17 style='mso-height-source:userset;height:12.95pt'>
   <td colspan=4 height=17 class=xl7528695 style='height:12.95pt'>Nota: El jefe
-  del depto. solicitante sera responsable del uso que se le da al material
+  del DEPTO. solicitante sera responsable del uso que se le da al material
   solicitado</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
@@ -528,7 +517,7 @@ EXCEL -->
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
   <td colspan=4 height=20 class=xl6428695 style='height:15.0pt'>INSTITUTO
-  TECNOL�GICO DE TUXTEPEC</td>
+  TECNOLOGICO DE TUXTEPEC</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
   <td colspan=4 height=20 class=xl6428695 style='height:15.0pt'>RECURSOS
@@ -580,68 +569,57 @@ EXCEL -->
   <td class=xl7228695>UNIDAD</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
+  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;{{$claves->get(0)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{str_limit($nombres->get(0), 18)}}</td>
+  <td class=xl7328695 style='border-top:none'>&nbsp;{{$cantidades->get(0)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{$unidades->get(0)}}</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
+  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;{{$claves->get(1)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{str_limit($nombres->get(1), 18)}}</td>
+  <td class=xl7328695 style='border-top:none'>&nbsp;{{$cantidades->get(1)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{$unidades->get(1)}}</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
+  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;{{$claves->get(2)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{str_limit($nombres->get(2), 18)}}</td>
+  <td class=xl7328695 style='border-top:none'>&nbsp;{{$cantidades->get(2)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{$unidades->get(2)}}</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
+  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;{{$claves->get(3)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{str_limit($nombres->get(3), 18)}}</td>
+  <td class=xl7328695 style='border-top:none'>&nbsp;{{$cantidades->get(3)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{$unidades->get(3)}}</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
+  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;{{$claves->get(4)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{str_limit($nombres->get(4), 18)}}</td>
+  <td class=xl7328695 style='border-top:none'>&nbsp;{{$cantidades->get(4)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{$unidades->get(4)}}</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
+  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;{{$claves->get(5)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{str_limit($nombres->get(5), 18)}}</td>
+  <td class=xl7328695 style='border-top:none'>&nbsp;{{$cantidades->get(5)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{$unidades->get(5)}}</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
+  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;{{$claves->get(6)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{str_limit($nombres->get(6), 18)}}</td>
+  <td class=xl7328695 style='border-top:none'>&nbsp;{{$cantidades->get(6)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{$unidades->get(6)}}</td>
  </tr>
- <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
+  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;{{$claves->get(7)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{str_limit($nombres->get(7), 18)}}</td>
+  <td class=xl7328695 style='border-top:none'>&nbsp;{{$cantidades->get(7)}}</td>
+  <td class=xl7428695 style='border-top:none'>&nbsp;{{$unidades->get(7)}}</td>
  </tr>
- <tr height=17 style='mso-height-source:userset;height:12.95pt'>
-  <td height=17 class=xl7328695 style='height:12.95pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
- </tr>
- <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl7328695 style='height:12.0pt;border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7328695 style='border-top:none'>&nbsp;</td>
-  <td class=xl7428695 style='border-top:none'>&nbsp;</td>
- </tr>
+
  <tr height=18 style='mso-height-source:userset;height:14.1pt'>
   <td colspan=4 height=18 class=xl7528695 style='height:14.1pt'>Nota: El jefe
-  del depto. solicitante sera responsable del uso que se le da al material
+  del DEPTO. solicitante sera responsable del uso que se le da al material
   solicitado</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>

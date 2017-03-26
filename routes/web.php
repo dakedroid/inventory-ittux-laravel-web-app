@@ -25,6 +25,7 @@ Route::get('/generar_salida','CarritoController@update');
 Route::get('/terminar_salida','SalidasController@destroy');
 Route::get('/pdf/prestamo','Salidas_prestamoController@store');
 Route::get('/pdf/salida_depto','SalidasController@store');
+Route::post('/pdf/salida_depto','SalidasController@store');
 Route::resource('almacen/historial_salida', 'Historial_salidasController');
 Route::resource('almacen/historial_altas', 'Historial_altasController');
 Route::resource('almacen/prestamo', 'PrestamoController');

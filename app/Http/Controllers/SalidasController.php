@@ -10,6 +10,8 @@ use App\CarritoModel;
 use App\Historial_salidasModel;
 use DB;
 use PDF;
+use Illuminate\Support\Facades\Input;
+
 
 class SalidasController extends Controller
 {
@@ -63,13 +65,25 @@ class SalidasController extends Controller
       $cantidades = DB::table('carrito')->pluck('cantidad');
       $unidades = DB::table('carrito')->pluck('unidad');
       $portador = DB::table('carrito')->pluck('portador')->first();
-
+      $costos = DB::table('carrito')->pluck('costo_u');
+      $num_ord_compra = $request->input('num_ord_compra');
+      $captura = $request->input('captura');
+      $provedor = $request->input('provedor');
+      $actividad = $request->input('actividad');
+      $num_req = $request->input('num_req');
+       // return $num_ord_compra;
       $pdf = PDF::loadView('documentos.salidas',[
             'claves'=>$claves,
             'nombres'=>$nombres,
             'cantidades'=>$cantidades,
             'unidades'=>$unidades,
-            'portador'=>$portador
+            'portador'=>$portador,
+            'costos'=>$costos,
+            'num_ord_compra'=>$num_ord_compra,
+            'captura' => $captura,
+            'provedor' => $provedor,
+            'actividad' => $actividad,
+            'num_req' => $num_req
       ])->setPaper('a4','portrait');
 
  
@@ -131,6 +145,7 @@ class SalidasController extends Controller
       $carrito->unidad=$request->get('unidad');
       $carrito->portador=$request->get('portador');
       $carrito->destino="departamento";
+      $carrito->costo_u=$request->get('costo_u');
       $carrito->save();
 
       $historial_s = new Historial_salidasModel;
